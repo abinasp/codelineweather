@@ -13,7 +13,7 @@ This app indicates weather of certain cities.
 1. `npm` and `angular 6` should be installed in the system.
 2. Clone this repository by using command `git clone https://github.com/abinasp/codelineweather.git`.
 3. Run `npm install`. It will install all the dependencies which is present in `package.json` file.
-4. I have used the the `weather.php` file as a datasource in imy XAMPP server.
+4. I have used the the `weather.php` file as a datasource in my XAMPP.
 5. Create a new folder in xampp\htdocs. I had named it codeline. you can check in `Constants.ts` file. If you wish to change the name of the folder then do change the API url in `Constants.ts`.
 6. Create an `index.php` file in the respective folder and place all the code of `weather.php` in it.
 7. In that folder also create a `.htaccess` file.
