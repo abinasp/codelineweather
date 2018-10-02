@@ -13,6 +13,7 @@ export class WeatherDetailsComponent implements OnInit {
 
   weatherWoeid:any;
   weatherDetails= new WeatherDetailsModel;
+  weatherIcon: any;
   isLoading=false;
   weatherSources=[];
 
@@ -26,12 +27,18 @@ export class WeatherDetailsComponent implements OnInit {
     .then((response)=>{
       this.weatherDetails = response;
       this.isLoading = true;
-      // for(let i=0;i<this.weatherDetails.sources.length;i++){
-      //   this.weatherDetailsService.getLinkPreview(this.weatherDetails.sources[i].url)
-      //   .then((response)=>{
-      //     this.weatherSources.push(response);
-      //   });
-      // }
+      console.log(this.weatherDetails);
+      // this.weatherDetailsService.getWeatherIcon(this.weatherDetails.consolidated_weather[0].weather_state_abbr)
+      // .then((response)=>{
+      //   this.weatherIcon = response;
+      //   console.log(this.weatherIcon);
+      // })
+      for(let i=0;i<this.weatherDetails.sources.length;i++){
+        this.weatherDetailsService.getLinkPreview(this.weatherDetails.sources[i].url)
+        .then((response)=>{
+          this.weatherSources.push(response);
+        });
+      }
     },(error)=>{ 
       console.error("WeatherDeatils component Error: ",error); 
     })

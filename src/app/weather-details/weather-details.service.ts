@@ -34,4 +34,16 @@ export class WeatherDeatilsService{
             });
         });
     }
+
+    getWeatherIcon(icon:any){
+        return new Promise((resolve,reject)=>{
+            this.httpRequest.getWeatherIcon(icon)
+            .then((response)=>{
+                resolve(response);
+            },(error)=>{
+                console.error("WeatherService getWeatherIcon error",error);
+                reject(error);
+            });
+        });
+    }
 }
