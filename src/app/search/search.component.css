@@ -1,0 +1,34 @@
+.first-section{
+    background-image: url('../../assets/images/weather-deatils.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 40em;
+    width: auto;
+}
+
+.header-section{
+    color:white; 
+    text-align: center; 
+    display: inline-block; 
+    font-size: -webkit-xxx-large;
+    margin: 100px auto;
+    width: 100%;
+}
+
+.card { 
+    display: inline-block;
+    margin: 1rem;
+    max-width: 335px;
+    border: none;
+    font-family: Lato;
+  }
+
+  .no-result{
+    background-image: url('../../assets/images/weather-deatils.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: -webkit-fill-available;
+  }

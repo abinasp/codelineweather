@@ -1,0 +1,42 @@
+<div *ngIf="isLoading">
+  <section class="first-section">
+    <div class="container">
+      <div class="header-section">
+        <p>{{weatherDetails.title}}
+        </p>
+       </div>
+      <div style="margin:0 auto; text-align: center;width: 100%; color: white; font-size: 25px;">
+        <p>Max Temp:- {{maxTemp(weatherDetails.consolidated_weather[0].max_temp)}} &#8451;
+        </p>
+        <p>Min Temp:- {{minTemp(weatherDetails.consolidated_weather[0].min_temp)}} &#8451;
+        </p>
+      </div>
+    </div>
+  </section> 
+
+  <section>
+    <div class="container" style="margin-top:-100px;">
+      <mat-card class="card" *ngFor="let weatherSource of weatherSources">
+          <mat-card-header>
+              <img style="margin-bottom: 10px;" mat-card-avatar [src]="weatherSource.image">
+              <mat-card-title>{{weatherSource.title}}</mat-card-title>
+            </mat-card-header>
+        <img (click)="onWeatherSourceDetails(weatherSource.url)" style="cursor:pointer;" mat-card-image [src]="weatherSource.image" alt="Photo of Link">
+        <mat-card-content>
+          <p> 
+              {{weatherSource.description}} 
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</div>
+
+<div class="no-result" *ngIf="isNewLoading">
+    <div class="container">
+      <div style="margin:300px auto; display: inline-block; text-align: center;width: 100%; color: white; font-size: 25px;">
+        <p>No results were found in the name {{this.searchWeather}}. Try changing the keyword!
+        </p>
+      </div>
+    </div>
+</div>

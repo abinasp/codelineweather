@@ -1,0 +1,63 @@
+<section class="first-section">
+    <div class="container">
+      <div class="header-section">
+        <p>Codeline Weather
+        </p>
+       </div> 
+      <div class="col-md-12">
+        <form class="navbar-form" role="search">
+          <div class="input-group add-on">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1" (click)="searchResult()">
+                <i class="fa fa-search"></i>
+              </span>
+            </div>
+            <input type="text" name="search" class="form-control" placeholder="Search City" [(ngModel)]="searchKeyword"/>
+          </div>
+        </form>
+      </div>
+    </div> 
+</section> 
+
+<section>  
+  <div class="container" style="margin-top:-100px;">
+    <mat-card class="card" *ngFor="let weather of cityWeather">
+        <mat-card-header>
+            <div mat-card-avatar [ngClass]="weather.title + '-image'"></div>
+            <mat-card-title>{{weather.title}}</mat-card-title>
+            <mat-card-subtitle>{{weather.parent.title}}</mat-card-subtitle> 
+          </mat-card-header>
+      <img (click)="onWeatherDetails(weather.woeid)" style="cursor:pointer;" *ngIf="weather.title=='Istanbul'" mat-card-image src="https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Turkey/Istanbul%20lead-xlarge.jpg" alt="Photo of Istanbul">
+      <img (click)="onWeatherDetails(weather.woeid)" style="cursor:pointer;" *ngIf="weather.title=='Vancouver'" mat-card-image src="https://www.fasken.com/-/media/c0e5b9f0154a4b618d81b4d34372a46b.ashx" alt="Photo of Vancouver">
+      <img (click)="onWeatherDetails(weather.woeid)" style="cursor:pointer;" *ngIf="weather.title=='Dublin'" mat-card-image src="https://www.telegraph.co.uk/content/dam/Travel/2016/june/dublin-AP-TRAVEL.jpg?imwidth=450" alt="Photo of Dublin">
+      <img (click)="onWeatherDetails(weather.woeid)" style="cursor:pointer;" *ngIf="weather.title=='London'" mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall.jpg/1000px-Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall.jpg" alt="Photo of London">
+      <img (click)="onWeatherDetails(weather.woeid)" style="cursor:pointer;" *ngIf="weather.title=='Helsinki'" mat-card-image src="https://d34ip4tojxno3w.cloudfront.net/app/uploads/Finland_Helsinki_cafe_street_web_by_JuliaKivela__MG_3292-400x300.jpg" alt="Photo of Helsinki">
+      <img (click)="onWeatherDetails(weather.woeid)" style="cursor:pointer;" *ngIf="weather.title=='Berlin'" mat-card-image src="https://www.visitberlin.de/system/files/styles/visitberlin_teaser_single_visitberlin_mobile_1x/private/image/_SCH6057_c_Scholvien_PSR_SC_STD_V2_DL_PPT_0.jpg?h=32462309&itok=Xi0CMgn5" alt="Photo of Berlin">
+      <mat-card-content>
+        <p *ngIf="weather.title=='Helsinki'"> 
+            Helsinki, Finland’s southern capital, sits on a peninsula in the Gulf of Finland. Its central avenue, Mannerheimintie, is flanked by institutions including the National Museum, tracing Finnish history from the Stone Age to the present. Also on Mannerheimintie are the imposing Parliament House and Kiasma, a contemporary art museum. Ornate red-brick Uspenski Cathedral overlooks a harbor.
+        </p>
+        <p *ngIf="weather.title=='Istanbul'"> 
+            Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here. In the Sultanahmet district, the open-air, Roman-era Hippodrome was for centuries the site of chariot races, and Egyptian obelisks also remain. The iconic Byzantine Hagia Sophia features a soaring 6th-century dome and rare Christian mosaics.
+        </p>
+        <p *ngIf="weather.title=='Vancouver'"> 
+            Vancouver, a bustling west coast seaport in British Columbia, is among Canada’s densest, most ethnically diverse cities. A popular filming location, it’s surrounded by mountains, and also has thriving art, theatre and music scenes. Vancouver Art Gallery is known for its works by regional artists, while the Museum of Anthropology houses preeminent First Nations collections.
+        </p>
+        <p *ngIf="weather.title=='Dublin'"> 
+            Dublin, capital of the Republic of Ireland, is on Ireland’s east coast at the mouth of the River Liffey. Its historic buildings include Dublin Castle, dating to the 13th century, and imposing St Patrick’s Cathedral, founded in 1191. City parks include landscaped St Stephen’s Green and huge Phoenix Park, containing Dublin Zoo. The National Museum of Ireland explores Irish heritage and culture.
+        </p>
+        <p *ngIf="weather.title=='London'"> 
+            London, the capital of England and the United Kingdom, is a 21st-century city with history stretching back to Roman times. At its centre stand the imposing Houses of Parliament, the iconic ‘Big Ben’ clock tower and Westminster Abbey, site of British monarch coronations. Across the Thames River, the London Eye observation wheel provides panoramic views of the South Bank cultural complex, and the entire city.
+        </p>
+        <p *ngIf="weather.title=='Berlin'"> 
+            Berlin, Germany’s capital, dates to the 13th century. Reminders of the city's turbulent 20th-century history include its Holocaust memorial and the Berlin Wall's graffitied remains. Divided during the Cold War, its 18th-century Brandenburg Gate has become a symbol of reunification. The city's also known for its art scene and modern landmarks like the gold-colored, swoop-roofed Berliner Philharmonie, built in 1963.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button style="font-family:Lato; font-weight: bold;">Temp:- {{maxTemp(weather.consolidated_weather[0].the_temp)}} &#8451;</button>
+        <button mat-button style="font-family:Lato; font-weight: bold;">Max:- {{maxTemp(weather.consolidated_weather[0].max_temp)}} &#8451;</button>
+        <button mat-button style="font-family:Lato; font-weight: bold;">Min:- {{minTemp(weather.consolidated_weather[0].min_temp)}} &#8451;</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section> 
